@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -342,7 +342,7 @@
   <div class="login-title">Principal Login</div>
 
   <div class="hint-box">
-    <strong>First time?</strong> Set up your admin account in Firebase Console, then login here.
+    <strong>Admin access only.</strong> Contact the school administrator if you need login credentials.
   </div>
 
   <form id="loginForm">
@@ -386,76 +386,58 @@
   </div>
 </div>
 
-<!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+<!-- Admin Auth -->
+<script>
+  // ─── ADMIN CREDENTIALS ───────────────────────────────────
+  // Change these to your own email and password
+  const ADMIN_EMAIL    = "admin@babystar.in";
+  const ADMIN_PASSWORD = "BabyStar@2025";
+  // ─────────────────────────────────────────────────────────
 
-  // ─── FIREBASE CONFIG ───
-  // Replace these values with your actual Firebase project config
-   const firebaseConfig = {
-  apiKey: "AIzaSyAWJ2M_lJmMUWfFDbItiRh73RRvIGXSYSg",
-  authDomain: "preschooldemo-e350e.firebaseapp.com",
-  projectId: "preschooldemo-e350e",
-  storageBucket: "preschooldemo-e350e.firebasestorage.app",
-  messagingSenderId: "1053542139222",
-  appId: "1:1053542139222:web:6fc6265efc6ed3bde8c2f7"
-};
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  // If already logged in, redirect to dashboard
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      window.location.href = 'dashboard.html';
-    }
-  });
+  // If already logged in this session, go straight to dashboard
+  if (sessionStorage.getItem("bsc_session")) {
+    window.location.href = "dashboard.html";
+  }
 
   // ─── LOGIN HANDLER ───
-  document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  document.getElementById("loginForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const email = document.getElementById('emailInput').value.trim();
-    const password = document.getElementById('passInput').value;
-    const btn = document.getElementById('loginBtn');
-    const spinner = document.getElementById('loginSpinner');
-    const loginIcon = document.getElementById('loginIcon');
-    const loginText = document.getElementById('loginText');
-    const errorMsg = document.getElementById('errorMsg');
-    const successMsg = document.getElementById('successMsg');
+    const email    = document.getElementById("emailInput").value.trim();
+    const password = document.getElementById("passInput").value;
+    const btn        = document.getElementById("loginBtn");
+    const spinner    = document.getElementById("loginSpinner");
+    const loginIcon  = document.getElementById("loginIcon");
+    const loginText  = document.getElementById("loginText");
+    const errorMsg   = document.getElementById("errorMsg");
+    const successMsg = document.getElementById("successMsg");
 
-    // Loading state
     btn.disabled = true;
-    spinner.style.display = 'block';
-    loginIcon.style.display = 'none';
-    loginText.textContent = 'Signing in...';
-    errorMsg.style.display = 'none';
-    successMsg.style.display = 'none';
+    spinner.style.display = "block";
+    loginIcon.style.display = "none";
+    loginText.textContent = "Signing in...";
+    errorMsg.style.display = "none";
+    successMsg.style.display = "none";
 
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      successMsg.style.display = 'flex';
-      loginText.textContent = 'Redirecting...';
-      setTimeout(() => { window.location.href = 'dashboard.html'; }, 1000);
-    } catch (err) {
-      let msg = 'Login failed. Please try again.';
-      if (err.code === 'auth/user-not-found') msg = 'No admin account found with this email.';
-      else if (err.code === 'auth/wrong-password') msg = 'Incorrect password. Please try again.';
-      else if (err.code === 'auth/invalid-email') msg = 'Invalid email address format.';
-      else if (err.code === 'auth/too-many-requests') msg = 'Too many failed attempts. Please wait before retrying.';
-      else if (err.code === 'auth/network-request-failed') msg = 'Network error. Check your internet connection.';
-      else if (err.code === 'auth/invalid-credential') msg = 'Invalid credentials. Please check email and password.';
-
-      document.getElementById('errorText').textContent = msg;
-      errorMsg.style.display = 'flex';
-
-      // Reset button
-      btn.disabled = false;
-      spinner.style.display = 'none';
-      loginIcon.style.display = 'inline';
-      loginText.textContent = 'Sign In to Dashboard';
-    }
+    // Small delay for UX feel
+    setTimeout(function() {
+      if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+        sessionStorage.setItem("bsc_session", JSON.stringify({ email: email, loginAt: new Date().toISOString() }));
+        successMsg.style.display = "flex";
+        loginText.textContent = "Redirecting...";
+        setTimeout(function() { window.location.href = "dashboard.html"; }, 900);
+      } else {
+        let msg = "Invalid credentials. Please check your email and password.";
+        if (email !== ADMIN_EMAIL) msg = "No admin account found with this email.";
+        else if (password !== ADMIN_PASSWORD) msg = "Incorrect password. Please try again.";
+        document.getElementById("errorText").textContent = msg;
+        errorMsg.style.display = "flex";
+        btn.disabled = false;
+        spinner.style.display = "none";
+        loginIcon.style.display = "inline";
+        loginText.textContent = "Sign In to Dashboard";
+      }
+    }, 600);
   });
 
   // ─── TOGGLE PASSWORD ───
