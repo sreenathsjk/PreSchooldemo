@@ -3,21 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Login | Baby Star Coaching Center</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Admin Login | Sri Chaithanya English Medium School</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
   :root {
-    --yellow: #FFD94A;
-    --orange: #FF8C42;
-    --pink: #FF6B9D;
-    --blue: #4ECDC4;
-    --white: #FFFFFF;
-    --cream: #FFFBF0;
-    --dark: #1E1E2E;
-    --gray: #6B7280;
-    --font-heading: 'Baloo 2', cursive;
-    --font-body: 'Nunito', sans-serif;
+    --navy:    #0a1628;
+    --navy2:   #112240;
+    --gold:    #c9933a;
+    --gold2:   #e8b44a;
+    --gold3:   #f5d07a;
+    --white:   #ffffff;
+    --gray:    #8892a4;
+    --font-display: 'Cinzel', serif;
+    --font-body:    'Poppins', sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,332 +24,223 @@
 
   body {
     min-height: 100vh;
-    background: linear-gradient(135deg, #1E1E2E 0%, #2D1B4E 50%, #1A2E3B 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(135deg, #020b18 0%, #0a1628 45%, #0f2347 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; position: relative; overflow: hidden;
   }
 
-  /* Animated background orbs */
-  .bg-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.25;
-    animation: orbFloat ease-in-out infinite;
-    pointer-events: none;
+  /* Animated background */
+  .bg-glow {
+    position: absolute; border-radius: 50%;
+    filter: blur(100px); opacity: 0.15;
+    animation: glowFloat ease-in-out infinite; pointer-events: none;
   }
-  .orb-1 { width: 400px; height: 400px; background: var(--orange); top: -100px; right: -100px; animation-duration: 18s; }
-  .orb-2 { width: 300px; height: 300px; background: var(--pink); bottom: -80px; left: -80px; animation-duration: 22s; animation-delay: -8s; }
-  .orb-3 { width: 200px; height: 200px; background: var(--blue); top: 50%; left: 5%; animation-duration: 15s; animation-delay: -4s; }
+  .glow-1 { width: 500px; height: 500px; background: var(--gold); top: -150px; right: -150px; animation-duration: 20s; }
+  .glow-2 { width: 350px; height: 350px; background: #1a3a6b; bottom: -100px; left: -100px; animation-duration: 25s; animation-delay: -10s; }
+  .glow-3 { width: 250px; height: 250px; background: var(--gold2); top: 60%; left: 10%; animation-duration: 18s; animation-delay: -5s; }
 
-  @keyframes orbFloat {
+  @keyframes glowFloat {
     0%,100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-40px) scale(1.1); }
+    50%      { transform: translateY(-50px) scale(1.15); }
   }
 
-  /* Stars BG */
+  /* Particle stars */
   .stars { position: absolute; inset: 0; pointer-events: none; }
   .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
+    position: absolute; background: white; border-radius: 50%;
     animation: twinkle ease-in-out infinite;
   }
   @keyframes twinkle {
-    0%,100% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.4); }
+    0%,100% { opacity: 0.15; transform: scale(1); }
+    50%      { opacity: 0.9; transform: scale(1.5); }
   }
 
   /* Login Card */
   .login-card {
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1.5px solid rgba(255,255,255,0.15);
-    border-radius: 28px;
-    padding: 48px 44px;
-    width: 100%;
-    max-width: 460px;
-    position: relative;
-    z-index: 10;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
-    animation: cardIn 0.7s cubic-bezier(.34,1.56,.64,1) both;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+    border: 1.5px solid rgba(201,147,58,0.25);
+    border-radius: 28px; padding: 48px 44px;
+    width: 100%; max-width: 480px; position: relative; z-index: 10;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 0 60px rgba(201,147,58,0.08), inset 0 1px 0 rgba(201,147,58,0.15);
+    animation: cardIn 0.8s cubic-bezier(.34,1.56,.64,1) both;
   }
-
   @keyframes cardIn {
-    from { opacity: 0; transform: translateY(40px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from { opacity: 0; transform: translateY(50px) scale(0.94); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  .login-logo {
-    text-align: center;
-    margin-bottom: 36px;
+  /* Top Gold Bar */
+  .card-top-bar {
+    position: absolute; top: 0; left: 28px; right: 28px; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold2), var(--gold), transparent);
+    border-radius: 0 0 4px 4px;
   }
 
-  .logo-badge {
-    width: 80px; height: 80px;
-    background: linear-gradient(135deg, var(--yellow), var(--orange));
-    border-radius: 22px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 38px;
-    margin-bottom: 16px;
-    box-shadow: 0 8px 28px rgba(255,140,66,0.45);
-    animation: logoBounce 3s ease-in-out infinite;
+  .login-logo { text-align: center; margin-bottom: 36px; }
+  .logo-emblem {
+    width: 88px; height: 88px;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    border-radius: 24px; display: inline-flex;
+    align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 30px; font-weight: 900;
+    color: var(--navy); margin-bottom: 18px;
+    box-shadow: 0 12px 36px rgba(201,147,58,0.5);
+    border: 2px solid rgba(245,208,122,0.4);
+    animation: emblemPulse 4s ease-in-out infinite;
   }
-
-  @keyframes logoBounce {
-    0%,100% { transform: translateY(0) rotate(-3deg); }
-    50% { transform: translateY(-6px) rotate(3deg); }
+  @keyframes emblemPulse {
+    0%,100% { box-shadow: 0 12px 36px rgba(201,147,58,0.5); }
+    50%      { box-shadow: 0 16px 50px rgba(201,147,58,0.7); }
   }
 
   .login-logo h1 {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 4px;
+    font-family: var(--font-display); font-size: 1.15rem; font-weight: 700;
+    color: var(--gold2); letter-spacing: 1.5px; line-height: 1.3; margin-bottom: 6px;
   }
-
   .login-logo p {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.5);
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-size: 0.72rem; color: rgba(255,255,255,0.45);
+    font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase;
   }
 
-  .login-title {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 24px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: center;
+  .divider-line {
+    display: flex; align-items: center; gap: 12px; margin: 24px 0;
+  }
+  .divider-line::before, .divider-line::after {
+    content: ''; flex: 1; height: 1px; background: rgba(201,147,58,0.2);
+  }
+  .divider-text {
+    font-size: 0.72rem; color: rgba(255,255,255,0.4);
+    font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    white-space: nowrap;
   }
 
-  .login-title::before,
-  .login-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(255,255,255,0.15);
-  }
-
-  .form-group {
-    margin-bottom: 18px;
-  }
-
+  .form-group { margin-bottom: 18px; }
   .form-group label {
-    display: block;
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    display: block; font-size: 0.75rem; font-weight: 700;
+    color: rgba(255,255,255,0.6); margin-bottom: 8px;
+    letter-spacing: 1px; text-transform: uppercase;
   }
 
-  .input-wrap {
-    position: relative;
-  }
-
+  .input-wrap { position: relative; }
   .input-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: rgba(255,255,255,0.4);
-    font-size: 15px;
-    pointer-events: none;
-    transition: color 0.2s;
+    position: absolute; left: 16px; top: 50%;
+    transform: translateY(-50%); color: rgba(255,255,255,0.3);
+    font-size: 14px; pointer-events: none; transition: color 0.25s;
   }
 
   .form-group input {
     width: 100%;
-    background: rgba(255,255,255,0.08);
-    border: 1.5px solid rgba(255,255,255,0.15);
-    border-radius: 14px;
-    padding: 14px 16px 14px 46px;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: white;
-    outline: none;
-    transition: all 0.25s;
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 14px; padding: 14px 16px 14px 46px;
+    font-family: var(--font-body); font-size: 0.93rem;
+    font-weight: 500; color: white; outline: none; transition: all 0.25s;
   }
-
-  .form-group input::placeholder { color: rgba(255,255,255,0.3); }
-
+  .form-group input::placeholder { color: rgba(255,255,255,0.25); }
   .form-group input:focus {
-    border-color: var(--orange);
-    background: rgba(255,140,66,0.1);
-    box-shadow: 0 0 0 3px rgba(255,140,66,0.15);
+    border-color: var(--gold);
+    background: rgba(201,147,58,0.08);
+    box-shadow: 0 0 0 4px rgba(201,147,58,0.12);
   }
-
-  .form-group input:focus + .input-icon,
-  .input-wrap:focus-within .input-icon { color: var(--orange); }
-
-  .input-icon { left: 16px; }
-  .form-group input { padding-left: 46px; }
+  .input-wrap:focus-within .input-icon { color: var(--gold); }
 
   .toggle-pass {
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.4);
-    cursor: pointer;
-    font-size: 15px;
-    padding: 4px;
-    transition: color 0.2s;
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: rgba(255,255,255,0.35);
+    cursor: pointer; font-size: 14px; padding: 4px; transition: color 0.2s;
   }
-  .toggle-pass:hover { color: var(--orange); }
+  .toggle-pass:hover { color: var(--gold2); }
 
   .btn-login {
     width: 100%;
-    background: linear-gradient(135deg, var(--orange), var(--pink));
-    border: none;
-    border-radius: 14px;
-    padding: 16px;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 800;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 6px 24px rgba(255,140,66,0.4);
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    border: none; border-radius: 14px; padding: 15px;
+    font-family: var(--font-display); font-size: 0.9rem; font-weight: 700;
+    color: var(--navy); cursor: pointer; transition: all 0.3s;
+    box-shadow: 0 8px 28px rgba(201,147,58,0.45); margin-top: 8px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; position: relative; overflow: hidden; letter-spacing: 1px;
   }
-
   .btn-login::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: white;
-    opacity: 0;
-    transition: opacity 0.2s;
+    content: ''; position: absolute; inset: 0;
+    background: white; opacity: 0; transition: opacity 0.2s;
   }
-  .btn-login:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(255,140,66,0.55); }
+  .btn-login:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,147,58,0.6); }
   .btn-login:hover::before { opacity: 0.08; }
   .btn-login:active { transform: translateY(0); }
   .btn-login:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
   .spinner {
     width: 18px; height: 18px;
-    border: 2.5px solid rgba(255,255,255,0.3);
-    border-top-color: white;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    display: none;
+    border: 2.5px solid rgba(10,22,40,0.3);
+    border-top-color: var(--navy);
+    border-radius: 50%; animation: spin 0.7s linear infinite; display: none;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
   .error-msg {
-    background: rgba(255,107,107,0.15);
-    border: 1.5px solid rgba(255,107,107,0.4);
-    border-radius: 12px;
-    padding: 12px 16px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #FF8888;
-    margin-top: 16px;
-    display: none;
-    align-items: center;
-    gap: 8px;
+    background: rgba(255,80,80,0.12); border: 1.5px solid rgba(255,80,80,0.35);
+    border-radius: 12px; padding: 12px 16px;
+    font-size: 0.84rem; font-weight: 600; color: #ff8888;
+    margin-top: 14px; display: none; align-items: center; gap: 8px;
   }
-
   .success-msg {
-    background: rgba(107,203,119,0.15);
-    border: 1.5px solid rgba(107,203,119,0.4);
-    border-radius: 12px;
-    padding: 12px 16px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #6BCB77;
-    margin-top: 16px;
-    display: none;
-    align-items: center;
-    gap: 8px;
+    background: rgba(107,203,119,0.12); border: 1.5px solid rgba(107,203,119,0.35);
+    border-radius: 12px; padding: 12px 16px;
+    font-size: 0.84rem; font-weight: 600; color: #6BCB77;
+    margin-top: 14px; display: none; align-items: center; gap: 8px;
   }
 
   .login-footer {
-    text-align: center;
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center; margin-top: 28px; padding-top: 22px;
+    border-top: 1px solid rgba(201,147,58,0.15);
   }
-
   .login-footer a {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.82rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    color: rgba(255,255,255,0.4); font-size: 0.8rem; font-weight: 500;
+    text-decoration: none; transition: color 0.2s;
+    display: inline-flex; align-items: center; gap: 7px;
   }
-
-  .login-footer a:hover { color: var(--yellow); }
+  .login-footer a:hover { color: var(--gold2); }
 
   .hint-box {
-    background: rgba(255,217,74,0.08);
-    border: 1px solid rgba(255,217,74,0.2);
-    border-radius: 12px;
-    padding: 12px 16px;
-    margin-bottom: 20px;
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.5);
-    font-weight: 500;
-    text-align: center;
+    background: rgba(201,147,58,0.07); border: 1px solid rgba(201,147,58,0.2);
+    border-radius: 12px; padding: 12px 16px; margin-bottom: 20px;
+    font-size: 0.8rem; color: rgba(255,255,255,0.45); font-weight: 500; text-align: center;
+    line-height: 1.5;
   }
-  .hint-box strong { color: var(--yellow); }
+  .hint-box strong { color: var(--gold2); }
 </style>
 </head>
 <body>
 
-<!-- Background decorations -->
-<div class="bg-orb orb-1"></div>
-<div class="bg-orb orb-2"></div>
-<div class="bg-orb orb-3"></div>
+<div class="bg-glow glow-1"></div>
+<div class="bg-glow glow-2"></div>
+<div class="bg-glow glow-3"></div>
 <div class="stars" id="starsContainer"></div>
 
 <div class="login-card">
-  <div class="login-logo">
-    <div class="logo-badge">⭐</div>
-    <h1>Baby Star Admin</h1>
-    <p>COACHING CENTER MANAGEMENT SYSTEM</p>
-  </div>
+  <div class="card-top-bar"></div>
 
-  <div class="login-title">Principal Login</div>
+  <div class="login-logo">
+    <div class="logo-emblem">SC</div>
+    <h1>Sri Chaithanya<br>English Medium School</h1>
+    <p>Garladinne · Anantapur · Admin Portal</p>
+  </div>
 
   <div class="hint-box">
-    <strong>First time?</strong> Set up your admin account in Firebase Console, then login here.
+    <strong>Admin Access Only</strong><br>
+    Configure your admin account in Firebase Console, then sign in here.
   </div>
+
+  <div class="divider-line"><span class="divider-text">Principal Login</span></div>
 
   <form id="loginForm">
     <div class="form-group">
       <label>Email Address</label>
       <div class="input-wrap">
         <i class="fas fa-envelope input-icon"></i>
-        <input type="email" id="emailInput" placeholder="principal@babystar.in" required autocomplete="email">
+        <input type="email" id="emailInput" placeholder="principal@srichaithanya.in" required autocomplete="email">
       </div>
     </div>
 
@@ -367,8 +257,8 @@
 
     <button type="submit" class="btn-login" id="loginBtn">
       <div class="spinner" id="loginSpinner"></div>
-      <i class="fas fa-sign-in-alt" id="loginIcon"></i>
-      <span id="loginText">Sign In to Dashboard</span>
+      <i class="fas fa-shield-alt" id="loginIcon"></i>
+      <span id="loginText">Access Dashboard</span>
     </button>
 
     <div class="error-msg" id="errorMsg">
@@ -377,12 +267,12 @@
     </div>
     <div class="success-msg" id="successMsg">
       <i class="fas fa-check-circle"></i>
-      <span>Login successful! Redirecting...</span>
+      <span>Login successful! Redirecting to dashboard...</span>
     </div>
   </form>
 
   <div class="login-footer">
-    <a href="index.html"><i class="fas fa-arrow-left"></i> Back to School Website</a>
+    <a href="sri-chaithanya-school.html"><i class="fas fa-arrow-left"></i> Back to School Website</a>
   </div>
 </div>
 
@@ -391,99 +281,76 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-  // ─── FIREBASE CONFIG ───
-  // Replace these values with your actual Firebase project config
   const firebaseConfig = {
-    apiKey:            "AIzaSyAWJ2M_lJmMUWfFDbItiRh73RRvIGXSYSg",
-    authDomain:        "preschooldemo-e350e.firebaseapp.com",
-    projectId:         "preschooldemo-e350e",
-    storageBucket:     "preschooldemo-e350e.firebasestorage.app",
-    messagingSenderId: "1053542139222",
-    appId:             "1:1053542139222:web:6fc6265efc6ed3bde8c2f7"
+    apiKey:            "YOUR_API_KEY",
+    authDomain:        "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId:         "YOUR_PROJECT_ID",
+    storageBucket:     "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId:             "YOUR_APP_ID"
   };
 
-  const app = initializeApp(firebaseConfig);
+  const app  = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // If already logged in, redirect to dashboard
   onAuthStateChanged(auth, (user) => {
-    if (user) {
-      window.location.href = 'dashboard.html';
-    }
+    if (user) window.location.href = 'dashboard.html';
   });
 
-  // ─── LOGIN HANDLER ───
   document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const email = document.getElementById('emailInput').value.trim();
+    const email    = document.getElementById('emailInput').value.trim();
     const password = document.getElementById('passInput').value;
-    const btn = document.getElementById('loginBtn');
-    const spinner = document.getElementById('loginSpinner');
-    const loginIcon = document.getElementById('loginIcon');
-    const loginText = document.getElementById('loginText');
-    const errorMsg = document.getElementById('errorMsg');
-    const successMsg = document.getElementById('successMsg');
+    const btn      = document.getElementById('loginBtn');
+    const spinner  = document.getElementById('loginSpinner');
+    const icon     = document.getElementById('loginIcon');
+    const text     = document.getElementById('loginText');
+    const errEl    = document.getElementById('errorMsg');
+    const sucEl    = document.getElementById('successMsg');
 
-    // Loading state
     btn.disabled = true;
     spinner.style.display = 'block';
-    loginIcon.style.display = 'none';
-    loginText.textContent = 'Signing in...';
-    errorMsg.style.display = 'none';
-    successMsg.style.display = 'none';
+    icon.style.display = 'none';
+    text.textContent = 'Signing in...';
+    errEl.style.display = 'none';
+    sucEl.style.display = 'none';
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      successMsg.style.display = 'flex';
-      loginText.textContent = 'Redirecting...';
-      setTimeout(() => { window.location.href = 'dashboard.html'; }, 1000);
+      sucEl.style.display = 'flex';
+      text.textContent = 'Redirecting...';
+      setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
     } catch (err) {
       let msg = 'Login failed. Please try again.';
-      if (err.code === 'auth/user-not-found') msg = 'No admin account found with this email.';
-      else if (err.code === 'auth/wrong-password') msg = 'Incorrect password. Please try again.';
-      else if (err.code === 'auth/invalid-email') msg = 'Invalid email address format.';
-      else if (err.code === 'auth/too-many-requests') msg = 'Too many failed attempts. Please wait before retrying.';
-      else if (err.code === 'auth/network-request-failed') msg = 'Network error. Check your internet connection.';
-      else if (err.code === 'auth/invalid-credential') msg = 'Invalid credentials. Please check email and password.';
-
+      if (err.code === 'auth/user-not-found')         msg = 'No admin account found with this email.';
+      else if (err.code === 'auth/wrong-password')    msg = 'Incorrect password. Please check and retry.';
+      else if (err.code === 'auth/invalid-email')     msg = 'Invalid email address format.';
+      else if (err.code === 'auth/too-many-requests') msg = 'Too many failed attempts. Please wait and retry.';
+      else if (err.code === 'auth/invalid-credential') msg = 'Invalid email or password. Please try again.';
       document.getElementById('errorText').textContent = msg;
-      errorMsg.style.display = 'flex';
-
-      // Reset button
+      errEl.style.display = 'flex';
       btn.disabled = false;
       spinner.style.display = 'none';
-      loginIcon.style.display = 'inline';
-      loginText.textContent = 'Sign In to Dashboard';
+      icon.style.display = 'inline';
+      text.textContent = 'Access Dashboard';
     }
   });
 
-  // ─── TOGGLE PASSWORD ───
   window.togglePassword = function() {
-    const input = document.getElementById('passInput');
+    const inp  = document.getElementById('passInput');
     const icon = document.getElementById('eyeIcon');
-    if (input.type === 'password') {
-      input.type = 'text';
-      icon.className = 'fas fa-eye-slash';
-    } else {
-      input.type = 'password';
-      icon.className = 'fas fa-eye';
-    }
+    inp.type   = inp.type === 'password' ? 'text' : 'password';
+    icon.className = inp.type === 'text' ? 'fas fa-eye-slash' : 'fas fa-eye';
   };
 
-  // ─── GENERATE STARS ───
-  const starsContainer = document.getElementById('starsContainer');
-  for (let i = 0; i < 60; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    const size = Math.random() * 3 + 1;
-    star.style.cssText = `
-      width:${size}px; height:${size}px;
-      top:${Math.random()*100}%; left:${Math.random()*100}%;
-      animation-duration:${Math.random()*3+2}s;
-      animation-delay:${Math.random()*4}s;
-    `;
-    starsContainer.appendChild(star);
+  // Generate stars
+  const sc = document.getElementById('starsContainer');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const sz = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${Math.random()*4+2}s;animation-delay:${Math.random()*5}s;`;
+    sc.appendChild(s);
   }
 </script>
 </body>
