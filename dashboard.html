@@ -3,40 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard | Baby Star Coaching Center</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Admin Dashboard | Sri Chaithanya English Medium School</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
-<!-- jsPDF for PDF generation -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<!-- html2canvas for PDF screenshots -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-<!-- ─── PAGE LOADER ─── -->
+<!-- PAGE LOADER -->
 <div class="page-loader" id="pageLoader">
-  <div class="loader-star">⭐</div>
+  <div class="loader-emblem">SC</div>
   <div class="loader-bar"><div class="loader-bar-inner"></div></div>
-  <div class="loader-text">Loading Dashboard...</div>
+  <div class="loader-text">Sri Chaithanya School — Loading Dashboard...</div>
 </div>
 
-<!-- ─── TOAST CONTAINER ─── -->
+<!-- TOAST -->
 <div class="toast-container" id="toastContainer"></div>
 
-<!-- ─── SIDEBAR OVERLAY (mobile) ─── -->
+<!-- SIDEBAR OVERLAY -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="appFns.closeSidebar()"></div>
 
-<!-- ─── APP SHELL ─── -->
 <div class="app-shell">
 
   <!-- ═══ SIDEBAR ═══ -->
   <aside class="sidebar" id="sidebar">
-    <a class="sidebar-brand" href="index.html" title="Go to main website">
-      <div class="brand-icon">⭐</div>
+    <a class="sidebar-brand" href="sri-chaithanya-school.html" title="Go to main website">
+      <div class="brand-icon">SC</div>
       <div class="brand-text">
-        <div class="brand-name">Baby Star</div>
-        <div class="brand-sub">Admin Dashboard</div>
+        <div class="brand-name">Sri Chaithanya</div>
+        <div class="brand-sub">English Medium School</div>
       </div>
     </a>
 
@@ -44,7 +41,7 @@
       <div class="admin-avatar"><i class="fas fa-user-shield"></i></div>
       <div>
         <div class="admin-name" id="adminEmail">Principal</div>
-        <div class="admin-role">Administrator</div>
+        <div class="admin-role">Administrator · Garladinne</div>
       </div>
     </div>
 
@@ -54,29 +51,35 @@
       <button class="nav-item active" data-panel="overview" onclick="appFns.navigateTo('overview')">
         <i class="fas fa-tachometer-alt"></i> Overview
       </button>
-
       <button class="nav-item" data-panel="students" onclick="appFns.navigateTo('students')">
         <i class="fas fa-user-graduate"></i> Students
         <span class="nav-badge" id="sidebarStudentCount">0</span>
       </button>
-
+      <button class="nav-item" data-panel="admission" onclick="appFns.navigateTo('admission')">
+        <i class="fas fa-file-signature"></i> Admissions
+        <span class="nav-badge" id="sidebarAdmissionCount">0</span>
+      </button>
       <button class="nav-item" data-panel="attendance" onclick="appFns.navigateTo('attendance')">
         <i class="fas fa-calendar-check"></i> Attendance
       </button>
-
       <button class="nav-item" data-panel="fees" onclick="appFns.navigateTo('fees')">
         <i class="fas fa-rupee-sign"></i> Fee Management
       </button>
+      <button class="nav-item" data-panel="teachers" onclick="appFns.navigateTo('teachers')">
+        <i class="fas fa-chalkboard-teacher"></i> Teachers
+        <span class="nav-badge" id="sidebarTeacherCount">0</span>
+      </button>
+      <button class="nav-item" data-panel="classes" onclick="appFns.navigateTo('classes')">
+        <i class="fas fa-school"></i> Classes
+      </button>
 
-      <div class="nav-section-label" style="margin-top:8px;">Reports</div>
-
+      <div class="nav-section-label" style="margin-top:6px;">Analytics</div>
       <button class="nav-item" data-panel="reports" onclick="appFns.navigateTo('reports')">
         <i class="fas fa-chart-pie"></i> Reports
       </button>
 
-      <div class="nav-section-label" style="margin-top:8px;">School</div>
-
-      <a class="nav-item" href="index.html" style="color:rgba(255,255,255,0.55);">
+      <div class="nav-section-label" style="margin-top:6px;">School</div>
+      <a class="nav-item" href="sri-chaithanya-school.html" style="color:rgba(255,255,255,0.45);">
         <i class="fas fa-home"></i> Main Website
       </a>
     </nav>
@@ -91,7 +94,7 @@
   <!-- ═══ MAIN CONTENT ═══ -->
   <div class="main-content">
 
-    <!-- ─── TOPBAR ─── -->
+    <!-- TOPBAR -->
     <header class="topbar">
       <div class="topbar-left">
         <button class="hamburger-btn" onclick="appFns.toggleSidebar()">
@@ -99,7 +102,7 @@
         </button>
         <div>
           <div class="page-title" id="pageTitle">Dashboard Overview</div>
-          <div class="page-breadcrumb">Baby Star Coaching Center — Garladinne</div>
+          <div class="page-breadcrumb">Sri Chaithanya English Medium School — Garladinne, Anantapur</div>
         </div>
       </div>
       <div class="topbar-right">
@@ -107,7 +110,7 @@
           <i class="fas fa-calendar-alt"></i>
           <span id="currentDate"></span>
         </div>
-        <a href="index.html" class="topbar-btn" title="View School Website">
+        <a href="sri-chaithanya-school.html" class="topbar-btn" title="View School Website">
           <i class="fas fa-external-link-alt"></i>
         </a>
         <button class="topbar-btn" onclick="appFns.logout()" title="Logout">
@@ -116,30 +119,25 @@
       </div>
     </header>
 
-    <!-- ─── PAGE CONTENT ─── -->
     <div class="page-content">
 
-      <!-- ═══════════════════════════════════════
-           PANEL: OVERVIEW
-      ═══════════════════════════════════════ -->
+      <!-- ═══════════ OVERVIEW ═══════════ -->
       <div class="panel active" id="panel-overview">
-
-        <!-- Stats -->
         <div class="stats-grid">
-          <div class="stat-card orange">
+          <div class="stat-card gold">
             <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
             <div class="stat-info">
               <div class="stat-value" id="statTotalStudents">—</div>
               <div class="stat-label">Total Students</div>
-              <div class="stat-sub" id="statLKG" style="color:var(--orange)">Loading...</div>
+              <div class="stat-sub text-gold" id="statClassBreakdown">Loading...</div>
             </div>
           </div>
-          <div class="stat-card blue">
+          <div class="stat-card teal">
             <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
             <div class="stat-info">
               <div class="stat-value" id="statAttendance">—</div>
               <div class="stat-label">Today's Attendance</div>
-              <div class="stat-sub" id="statPresentToday">Loading...</div>
+              <div class="stat-sub" id="statPresentToday" style="color:var(--teal)">Loading...</div>
             </div>
           </div>
           <div class="stat-card green">
@@ -147,15 +145,15 @@
             <div class="stat-info">
               <div class="stat-value" id="statTotalFees">—</div>
               <div class="stat-label">Fees Collected</div>
-              <div class="stat-sub" id="statPendingFees" style="color:var(--orange)">Loading...</div>
+              <div class="stat-sub text-red" id="statPendingFees">Loading...</div>
             </div>
           </div>
-          <div class="stat-card pink">
-            <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+          <div class="stat-card blue">
+            <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
             <div class="stat-info">
-              <div class="stat-value" id="statTotalFeesCount">—</div>
-              <div class="stat-label">Fee Records</div>
-              <div class="stat-sub" id="statUKG" style="color:var(--pink)">Loading...</div>
+              <div class="stat-value" id="statTeachers">—</div>
+              <div class="stat-label">Teaching Staff</div>
+              <div class="stat-sub" style="color:var(--blue)" id="statNewAdmissions">Loading...</div>
             </div>
           </div>
         </div>
@@ -163,13 +161,17 @@
         <!-- Quick Actions -->
         <div class="card">
           <div class="card-header">
-            <div class="card-title"><i class="fas fa-bolt" style="color:var(--yellow)"></i> Quick Actions</div>
+            <div class="card-title"><i class="fas fa-bolt" style="color:var(--gold)"></i> Quick Actions</div>
           </div>
           <div class="card-body">
             <div class="quick-actions">
               <div class="quick-action" onclick="appFns.navigateTo('students');setTimeout(()=>appFns.openAddStudentModal(),200)">
-                <span class="quick-action-icon">👶</span>
+                <span class="quick-action-icon">🎓</span>
                 <div class="quick-action-label">Add Student</div>
+              </div>
+              <div class="quick-action" onclick="appFns.navigateTo('admission');setTimeout(()=>appFns.openAddAdmissionModal(),200)">
+                <span class="quick-action-icon">📋</span>
+                <div class="quick-action-label">New Admission</div>
               </div>
               <div class="quick-action" onclick="appFns.navigateTo('attendance')">
                 <span class="quick-action-icon">📅</span>
@@ -177,15 +179,15 @@
               </div>
               <div class="quick-action" onclick="appFns.navigateTo('fees');setTimeout(()=>appFns.openAddFeeModal(),200)">
                 <span class="quick-action-icon">💰</span>
-                <div class="quick-action-label">Add Fee Record</div>
+                <div class="quick-action-label">Collect Fee</div>
+              </div>
+              <div class="quick-action" onclick="appFns.navigateTo('teachers');setTimeout(()=>appFns.openAddTeacherModal(),200)">
+                <span class="quick-action-icon">👨‍🏫</span>
+                <div class="quick-action-label">Add Teacher</div>
               </div>
               <div class="quick-action" onclick="appFns.navigateTo('reports')">
                 <span class="quick-action-icon">📊</span>
-                <div class="quick-action-label">Generate Report</div>
-              </div>
-              <div class="quick-action" onclick="window.open('index.html','_blank')">
-                <span class="quick-action-icon">🌐</span>
-                <div class="quick-action-label">View Website</div>
+                <div class="quick-action-label">Reports</div>
               </div>
             </div>
           </div>
@@ -194,141 +196,111 @@
         <!-- Recent Students -->
         <div class="card">
           <div class="card-header">
-            <div class="card-title"><i class="fas fa-user-graduate" style="color:var(--orange)"></i> Recent Students</div>
-            <button class="btn btn-primary btn-sm" onclick="appFns.navigateTo('students')">View All</button>
+            <div class="card-title"><i class="fas fa-user-graduate" style="color:var(--gold)"></i> Recent Students</div>
+            <button class="btn btn-sm btn-outline" onclick="appFns.navigateTo('students')">View All</button>
           </div>
-          <div class="card-body no-pad">
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Class</th>
-                    <th>Parent</th>
-                    <th>Phone</th>
-                  </tr>
-                </thead>
-                <tbody id="overviewStudentsBody">
-                  <tr><td colspan="4"><div class="empty-state"><span class="empty-emoji">👶</span><div class="empty-title">Loading students...</div></div></td></tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Name</th><th>Class</th><th>Parent</th><th>Phone</th></tr></thead>
+              <tbody id="overviewStudentsBody">
+                <tr><td colspan="4"><div class="empty-state"><div class="empty-title">Loading...</div></div></td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
-      <!-- ═══════════════════════════════════════
-           PANEL: STUDENTS
-      ═══════════════════════════════════════ -->
+      <!-- ═══════════ STUDENTS ═══════════ -->
       <div class="panel" id="panel-students">
         <div class="card">
           <div class="card-header">
-            <div class="card-title">
-              <i class="fas fa-user-graduate" style="color:var(--orange)"></i>
-              Student Records
-              <span class="badge badge-info" id="studentCountBadge">0</span>
+            <div class="card-title"><i class="fas fa-user-graduate" style="color:var(--gold)"></i> Student Management
+              <span class="nav-badge" id="studentCountBadge" style="background:var(--gold);color:var(--navy)">0</span>
             </div>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-              <div class="table-controls">
-                <div class="search-wrap">
-                  <i class="fas fa-search"></i>
-                  <input type="text" placeholder="Search students..." oninput="appFns.searchStudents(this.value)" id="studentSearch">
-                </div>
-                <select onchange="appFns.filterByClass(this.value)" style="width:auto;" id="classFilterSelect">
-                  <option value="">All Classes</option>
-                  <option value="LKG">LKG</option>
-                  <option value="UKG">UKG</option>
-                </select>
-              </div>
-              <button class="btn btn-primary" onclick="appFns.openAddStudentModal()">
-                <i class="fas fa-plus"></i> Add Student
-              </button>
+            <button class="btn btn-gold" onclick="appFns.openAddStudentModal()">
+              <i class="fas fa-plus"></i> Add Student
+            </button>
+          </div>
+          <div class="table-controls">
+            <div class="search-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" class="search-input" placeholder="Search by name, parent..." oninput="appFns.searchStudents(this.value)">
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              <select style="width:auto;padding:8px 12px;font-size:0.8rem;" onchange="appFns.filterByClass(this.value)">
+                <option value="">All Classes</option>
+                <option>Nursery</option><option>LKG</option><option>UKG</option>
+                <option>1st</option><option>2nd</option><option>3rd</option><option>4th</option><option>5th</option>
+                <option>6th</option><option>7th</option><option>8th</option><option>9th</option><option>10th</option>
+              </select>
             </div>
           </div>
-          <div class="card-body no-pad">
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Student</th>
-                    <th>Class</th>
-                    <th>Parent</th>
-                    <th>Phone</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="studentsTableBody">
-                  <tr><td colspan="6"><div class="empty-state"><span class="empty-emoji">👶</span><div class="empty-title">Loading...</div></div></td></tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Student Name</th><th>Class</th><th>Gender</th><th>Parent / Guardian</th><th>Phone</th><th>Actions</th></tr></thead>
+              <tbody id="studentsTableBody">
+                <tr><td colspan="7"><div class="empty-state"><span class="empty-emoji">🎓</span><div class="empty-title">No students yet</div><div class="empty-sub">Click 'Add Student' to get started.</div></div></td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
-      <!-- ═══════════════════════════════════════
-           PANEL: ATTENDANCE
-      ═══════════════════════════════════════ -->
-      <div class="panel" id="panel-attendance">
-
-        <!-- Controls -->
+      <!-- ═══════════ ADMISSIONS ═══════════ -->
+      <div class="panel" id="panel-admission">
         <div class="card">
           <div class="card-header">
-            <div class="card-title"><i class="fas fa-calendar-check" style="color:var(--blue)"></i> Mark Attendance</div>
-          </div>
-          <div class="card-body">
-            <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;">
-              <div class="form-group" style="margin:0;">
-                <label>Select Date</label>
-                <input type="date" id="attDate" onchange="appFns.loadAttendanceForDate()" style="width:auto;">
-              </div>
-              <div class="form-group" style="margin:0;">
-                <label>Filter by Class</label>
-                <select id="attClassFilter" onchange="renderAttendanceGrid && renderAttendanceGrid()" style="width:auto;">
-                  <option value="">All Classes</option>
-                  <option value="LKG">LKG</option>
-                  <option value="UKG">UKG</option>
-                </select>
-              </div>
-              <button class="btn btn-outline" onclick="appFns.markAllPresent()"><i class="fas fa-check-double"></i> Mark All Present</button>
-              <button class="btn btn-outline" onclick="appFns.markAllAbsent()"><i class="fas fa-times"></i> Mark All Absent</button>
+            <div class="card-title"><i class="fas fa-file-signature" style="color:var(--gold)"></i> Admission Management
+              <span class="nav-badge" id="admissionCountBadge" style="background:var(--gold);color:var(--navy)">0</span>
             </div>
-          </div>
-        </div>
-
-        <!-- Summary Bar -->
-        <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:20px;">
-          <div class="stat-card green">
-            <div class="stat-icon"><i class="fas fa-check"></i></div>
-            <div class="stat-info">
-              <div class="stat-value" id="attPresentCount">0</div>
-              <div class="stat-label">Present</div>
-            </div>
-          </div>
-          <div class="stat-card" style="--c:var(--red)">
-            <div class="stat-icon" style="background:var(--red-light);color:var(--red)"><i class="fas fa-times"></i></div>
-            <div class="stat-info">
-              <div class="stat-value" id="attAbsentCount">0</div>
-              <div class="stat-label">Absent</div>
-            </div>
-          </div>
-          <div class="stat-card yellow">
-            <div class="stat-icon"><i class="fas fa-question"></i></div>
-            <div class="stat-info">
-              <div class="stat-value" id="attUnmarkedCount">0</div>
-              <div class="stat-label">Unmarked</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Attendance Grid -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title"><i class="fas fa-users" style="color:var(--blue)"></i> Students</div>
-            <button class="btn btn-success" id="saveAttBtn" onclick="appFns.saveAttendance()">
-              <i class="fas fa-save"></i> Save Attendance
+            <button class="btn btn-gold" onclick="appFns.openAddAdmissionModal()">
+              <i class="fas fa-plus"></i> New Admission
             </button>
+          </div>
+          <div class="table-controls">
+            <div class="search-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" class="search-input" placeholder="Search applicant name..." oninput="appFns.searchAdmissions(this.value)">
+            </div>
+            <select style="width:auto;padding:8px 12px;font-size:0.8rem;" onchange="appFns.filterAdmissions(this.value)">
+              <option value="">All Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Applicant Name</th><th>Class Applied</th><th>Parent Name</th><th>Phone</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="admissionsTableBody">
+                <tr><td colspan="8"><div class="empty-state"><span class="empty-emoji">📋</span><div class="empty-title">No admissions yet</div><div class="empty-sub">Click 'New Admission' to add one.</div></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ ATTENDANCE ═══════════ -->
+      <div class="panel" id="panel-attendance">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-calendar-check" style="color:var(--gold)"></i> Attendance</div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              <input type="date" id="attDate" style="width:auto;padding:8px 12px;font-size:0.82rem;" onchange="appFns.loadAttendanceForDate()">
+              <select id="attClassFilter" style="width:auto;padding:8px 12px;font-size:0.82rem;" onchange="appFns.loadAttendanceForDate()">
+                <option value="">All Classes</option>
+                <option>Nursery</option><option>LKG</option><option>UKG</option>
+                <option>1st</option><option>2nd</option><option>3rd</option><option>4th</option><option>5th</option>
+                <option>6th</option><option>7th</option><option>8th</option><option>9th</option><option>10th</option>
+              </select>
+              <button class="btn btn-sm btn-outline" onclick="appFns.markAllPresent()"><i class="fas fa-check-double"></i> All Present</button>
+              <button class="btn btn-sm btn-outline" onclick="appFns.markAllAbsent()"><i class="fas fa-times"></i> All Absent</button>
+            </div>
+          </div>
+          <div style="padding:12px 22px;border-bottom:1.5px solid var(--border);font-size:0.82rem;color:var(--text-muted);display:flex;gap:20px;flex-wrap:wrap;">
+            <span><i class="fas fa-check" style="color:var(--green);margin-right:5px;"></i> Present: <strong id="attPresentCount">0</strong></span>
+            <span><i class="fas fa-times" style="color:var(--red);margin-right:5px;"></i> Absent: <strong id="attAbsentCount">0</strong></span>
+            <span><i class="fas fa-users" style="color:var(--gold);margin-right:5px;"></i> Total: <strong id="attTotalCount">0</strong></span>
           </div>
           <div class="card-body">
             <div class="attendance-grid" id="attendanceGrid">
@@ -338,131 +310,172 @@
               </div>
             </div>
           </div>
+          <div style="padding:16px 22px;border-top:1.5px solid var(--border);display:flex;justify-content:flex-end;gap:10px;">
+            <button class="btn btn-gold" onclick="appFns.saveAttendance()">
+              <i class="fas fa-save"></i> Save Attendance
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- ═══════════════════════════════════════
-           PANEL: FEES
-      ═══════════════════════════════════════ -->
+      <!-- ═══════════ FEE MANAGEMENT ═══════════ -->
       <div class="panel" id="panel-fees">
-
-        <!-- Fee Summary -->
-        <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:24px;">
-          <div class="stat-card green">
-            <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
-            <div class="stat-info">
-              <div class="stat-value" id="feeTotalPaid">₹0</div>
-              <div class="stat-label">Total Collected</div>
-            </div>
-          </div>
-          <div class="stat-card orange">
-            <div class="stat-icon"><i class="fas fa-clock"></i></div>
-            <div class="stat-info">
-              <div class="stat-value" id="feeTotalPending">₹0</div>
-              <div class="stat-label">Pending</div>
-            </div>
-          </div>
-          <div class="stat-card blue">
-            <div class="stat-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-            <div class="stat-info">
-              <div class="stat-value" id="feeRecordCount">0</div>
-              <div class="stat-label">Total Records</div>
-            </div>
-          </div>
-        </div>
-
         <div class="card">
           <div class="card-header">
-            <div class="card-title"><i class="fas fa-rupee-sign" style="color:var(--green)"></i> Fee Records</div>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-              <select id="feeFilterStudent" onchange="appFns.filterFees()" style="width:auto;font-size:0.85rem;">
-                <option value="">All Students</option>
-              </select>
-              <select id="feeFilterStatus" onchange="appFns.filterFees()" style="width:auto;font-size:0.85rem;">
-                <option value="">All Status</option>
-                <option value="Paid">Paid</option>
-                <option value="Pending">Pending</option>
-              </select>
-              <button class="btn btn-primary" onclick="appFns.openAddFeeModal()">
-                <i class="fas fa-plus"></i> Add Record
-              </button>
+            <div class="card-title"><i class="fas fa-rupee-sign" style="color:var(--gold)"></i> Fee Management</div>
+            <button class="btn btn-gold" onclick="appFns.openAddFeeModal()">
+              <i class="fas fa-plus"></i> Add Fee Record
+            </button>
+          </div>
+          <div class="table-controls">
+            <div class="search-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" class="search-input" placeholder="Search by student name..." oninput="appFns.filterFees(this.value)">
+            </div>
+            <select style="width:auto;padding:8px 12px;font-size:0.8rem;" onchange="appFns.filterFeesByStatus(this.value)" id="feeStatusFilter">
+              <option value="">All Status</option>
+              <option value="Paid">Paid</option>
+              <option value="Pending">Pending</option>
+            </select>
+          </div>
+          <!-- Fee Summary Bar -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1.5px solid var(--border);">
+            <div style="padding:16px 22px;border-right:1.5px solid var(--border);text-align:center;">
+              <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--green)" id="feeTotalCollected">₹0</div>
+              <div style="font-size:0.72rem;color:var(--text-muted);font-weight:600;margin-top:2px;">Total Collected</div>
+            </div>
+            <div style="padding:16px 22px;border-right:1.5px solid var(--border);text-align:center;">
+              <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--orange)" id="feeTotalPending">₹0</div>
+              <div style="font-size:0.72rem;color:var(--text-muted);font-weight:600;margin-top:2px;">Total Pending</div>
+            </div>
+            <div style="padding:16px 22px;text-align:center;">
+              <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--navy)" id="feeTotalRecords">0</div>
+              <div style="font-size:0.72rem;color:var(--text-muted);font-weight:600;margin-top:2px;">Fee Records</div>
             </div>
           </div>
-          <div class="card-body no-pad">
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Student</th>
-                    <th>Amount</th>
-                    <th>Month</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="feesTableBody">
-                  <tr><td colspan="6"><div class="empty-state"><span class="empty-emoji">💰</span><div class="empty-title">Loading...</div></div></td></tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Student</th><th>Class</th><th>Amount</th><th>Month</th><th>Fee Type</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="feesTableBody">
+                <tr><td colspan="9"><div class="empty-state"><span class="empty-emoji">💰</span><div class="empty-title">No fee records yet</div></div></td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
-      <!-- ═══════════════════════════════════════
-           PANEL: REPORTS
-      ═══════════════════════════════════════ -->
+      <!-- ═══════════ TEACHERS ═══════════ -->
+      <div class="panel" id="panel-teachers">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-chalkboard-teacher" style="color:var(--gold)"></i> Teacher Management
+              <span class="nav-badge" id="teacherCountBadge" style="background:var(--gold);color:var(--navy)">0</span>
+            </div>
+            <button class="btn btn-gold" onclick="appFns.openAddTeacherModal()">
+              <i class="fas fa-plus"></i> Add Teacher
+            </button>
+          </div>
+          <div class="table-controls">
+            <div class="search-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" class="search-input" placeholder="Search by name or subject..." oninput="appFns.searchTeachers(this.value)">
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Teacher Name</th><th>Subjects</th><th>Classes Assigned</th><th>Phone</th><th>Qualification</th><th>Actions</th></tr></thead>
+              <tbody id="teachersTableBody">
+                <tr><td colspan="7"><div class="empty-state"><span class="empty-emoji">👨‍🏫</span><div class="empty-title">No teachers added yet</div><div class="empty-sub">Click 'Add Teacher' to add staff.</div></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ CLASSES ═══════════ -->
+      <div class="panel" id="panel-classes">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-school" style="color:var(--gold)"></i> Class Management</div>
+          </div>
+          <div class="card-body" id="classesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;">
+            <!-- Dynamically rendered class cards -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ REPORTS ═══════════ -->
       <div class="panel" id="panel-reports">
         <div class="card">
           <div class="card-header">
-            <div class="card-title"><i class="fas fa-chart-pie" style="color:var(--purple)"></i> Generate Report</div>
+            <div class="card-title"><i class="fas fa-chart-pie" style="color:var(--gold)"></i> Reports & Analytics</div>
           </div>
           <div class="card-body">
-            <div class="form-grid" style="margin-bottom:20px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
               <div class="form-group">
-                <label>Report Type *</label>
+                <label>Select Student</label>
+                <select id="reportStudentSelect"><option value="">— Select Student —</option></select>
+              </div>
+              <div class="form-group">
+                <label>Report Type</label>
                 <select id="reportType">
-                  <option value="">— Select Report Type —</option>
+                  <option value="fee">Fee Report</option>
                   <option value="attendance">Attendance Report</option>
-                  <option value="fees">Fee Report</option>
                 </select>
               </div>
               <div class="form-group">
-                <label>Select Student *</label>
-                <select id="reportStudentSelect">
-                  <option value="">— Select Student —</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>From Date *</label>
+                <label>From Date</label>
                 <input type="date" id="reportFrom">
               </div>
               <div class="form-group">
-                <label>To Date *</label>
+                <label>To Date</label>
                 <input type="date" id="reportTo">
               </div>
             </div>
-            <button class="btn btn-primary btn-lg" id="generateReportBtn" onclick="appFns.generateReport()">
+            <button class="btn btn-gold" onclick="appFns.generateReport()">
               <i class="fas fa-chart-bar"></i> Generate Report
             </button>
           </div>
         </div>
 
-        <!-- Report Info Cards -->
-        <div class="grid-2">
-          <div class="card">
-            <div class="card-body" style="text-align:center;padding:32px 20px;">
-              <div style="font-size:40px;margin-bottom:12px;">📊</div>
-              <div style="font-family:var(--font-head);font-weight:800;font-size:1rem;margin-bottom:8px;">Attendance Report</div>
-              <div style="color:var(--text-muted);font-size:0.85rem;font-weight:500;line-height:1.5;">Shows daily presence/absence records for a student in a date range with attendance percentage.</div>
-            </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-file-alt" style="color:var(--gold)"></i> Quick Reports</div>
           </div>
-          <div class="card">
-            <div class="card-body" style="text-align:center;padding:32px 20px;">
-              <div style="font-size:40px;margin-bottom:12px;">💰</div>
-              <div style="font-family:var(--font-head);font-weight:800;font-size:1rem;margin-bottom:8px;">Fee Report</div>
-              <div style="color:var(--text-muted);font-size:0.85rem;font-weight:500;line-height:1.5;">Shows all fee transactions for a student in a date range with paid/pending summary.</div>
+          <div class="card-body">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;">
+              <div class="report-card">
+                <div class="report-icon" style="background:var(--green-light);color:var(--green)"><i class="fas fa-rupee-sign"></i></div>
+                <div style="flex:1;">
+                  <div style="font-weight:700;font-size:0.9rem;">All Fee Records</div>
+                  <div style="font-size:0.76rem;color:var(--text-muted)">Full fee collection report</div>
+                </div>
+                <button class="btn btn-sm btn-outline" onclick="appFns.generateAllFeesReport()"><i class="fas fa-download"></i></button>
+              </div>
+              <div class="report-card">
+                <div class="report-icon" style="background:var(--orange-light);color:var(--orange)"><i class="fas fa-exclamation-triangle"></i></div>
+                <div style="flex:1;">
+                  <div style="font-weight:700;font-size:0.9rem;">Pending Fees</div>
+                  <div style="font-size:0.76rem;color:var(--text-muted)">Students with due fees</div>
+                </div>
+                <button class="btn btn-sm btn-outline" onclick="appFns.generatePendingFeesReport()"><i class="fas fa-download"></i></button>
+              </div>
+              <div class="report-card">
+                <div class="report-icon" style="background:var(--teal-light);color:var(--teal)"><i class="fas fa-calendar-check"></i></div>
+                <div style="flex:1;">
+                  <div style="font-weight:700;font-size:0.9rem;">Today's Attendance</div>
+                  <div style="font-size:0.76rem;color:var(--text-muted)">Present / Absent summary</div>
+                </div>
+                <button class="btn btn-sm btn-outline" onclick="appFns.generateTodayAttendanceReport()"><i class="fas fa-download"></i></button>
+              </div>
+              <div class="report-card">
+                <div class="report-icon" style="background:var(--blue-light);color:var(--blue)"><i class="fas fa-users"></i></div>
+                <div style="flex:1;">
+                  <div style="font-weight:700;font-size:0.9rem;">Class-wise Students</div>
+                  <div style="font-size:0.76rem;color:var(--text-muted)">Students per class breakdown</div>
+                </div>
+                <button class="btn btn-sm btn-outline" onclick="appFns.generateClasswiseReport()"><i class="fas fa-download"></i></button>
+              </div>
             </div>
           </div>
         </div>
@@ -472,81 +485,74 @@
   </div><!-- /main-content -->
 </div><!-- /app-shell -->
 
-<!-- ═══════════════════════════════════════
-     MODAL: ADD / EDIT STUDENT
-═══════════════════════════════════════ -->
+<!-- ═══ MODAL: ADD/EDIT STUDENT ═══ -->
 <div class="modal-overlay" id="studentModal">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-title"><i class="fas fa-user-graduate" style="color:var(--orange)"></i> <span id="studentModalTitle">Add New Student</span></div>
+      <div class="modal-title"><i class="fas fa-user-graduate" style="color:var(--gold)"></i> <span id="studentModalTitle">Add Student</span></div>
       <button class="modal-close" onclick="appFns.closeStudentModal()"><i class="fas fa-times"></i></button>
     </div>
     <div class="modal-body">
       <form id="studentForm" onsubmit="event.preventDefault()">
         <div class="form-grid">
-          <div class="form-group full">
-            <label>Student Full Name *</label>
-            <input type="text" id="sName" placeholder="e.g. Arjun Kumar" required>
-          </div>
-          <div class="form-group">
-            <label>Age (years) *</label>
-            <input type="number" id="sAge" placeholder="e.g. 4" min="2" max="8" required>
-          </div>
-          <div class="form-group">
-            <label>Class *</label>
-            <select id="sClass" required>
-              <option value="LKG">LKG</option>
-              <option value="UKG">UKG</option>
+          <div class="form-group full"><label>Full Name *</label><input type="text" id="sName" placeholder="e.g. Ramesh Kumar" required></div>
+          <div class="form-group"><label>Date of Birth *</label><input type="date" id="sDob" required></div>
+          <div class="form-group"><label>Gender *</label>
+            <select id="sGender" required>
+              <option value="">— Select —</option>
+              <option>Male</option><option>Female</option>
             </select>
           </div>
-          <div class="form-group full">
-            <label>Parent / Guardian Name *</label>
-            <input type="text" id="sParent" placeholder="e.g. Ramesh Kumar" required>
+          <div class="form-group"><label>Class *</label>
+            <select id="sClass" required>
+              <option value="">— Select Class —</option>
+              <option>Nursery</option><option>LKG</option><option>UKG</option>
+              <option>1st</option><option>2nd</option><option>3rd</option><option>4th</option><option>5th</option>
+              <option>6th</option><option>7th</option><option>8th</option><option>9th</option><option>10th</option>
+            </select>
           </div>
-          <div class="form-group full">
-            <label>Parent Phone Number *</label>
-            <input type="tel" id="sPhone" placeholder="e.g. 9876543210" required>
-          </div>
+          <div class="form-group"><label>Roll Number</label><input type="text" id="sRoll" placeholder="e.g. 25"></div>
+          <div class="form-group full"><label>Parent / Guardian Name *</label><input type="text" id="sParent" placeholder="e.g. Suresh Kumar" required></div>
+          <div class="form-group"><label>Parent Phone *</label><input type="tel" id="sPhone" placeholder="9876543210" required></div>
+          <div class="form-group"><label>Address</label><input type="text" id="sAddress" placeholder="Village / Town"></div>
+          <div class="form-group"><label>Aadhaar Number</label><input type="text" id="sAadhaar" placeholder="XXXX XXXX XXXX"></div>
+          <div class="form-group"><label>Previous School</label><input type="text" id="sPrevSchool" placeholder="If applicable"></div>
         </div>
       </form>
     </div>
     <div class="modal-footer">
       <button class="btn btn-outline" onclick="appFns.closeStudentModal()">Cancel</button>
-      <button class="btn btn-primary" id="saveStudentBtn" onclick="appFns.saveStudent()">
-        <i class="fas fa-save"></i> Add Student
+      <button class="btn btn-gold" id="saveStudentBtn" onclick="appFns.saveStudent()">
+        <i class="fas fa-save"></i> <span id="saveStudentBtnText">Add Student</span>
       </button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     MODAL: DELETE CONFIRM
-═══════════════════════════════════════ -->
+<!-- ═══ MODAL: DELETE CONFIRM ═══ -->
 <div class="modal-overlay" id="deleteModal">
-  <div class="modal" style="max-width:400px;">
+  <div class="modal" style="max-width:420px;">
     <div class="modal-header">
-      <div class="modal-title" style="color:var(--red)"><i class="fas fa-trash"></i> Delete Student</div>
+      <div class="modal-title" style="color:var(--red)"><i class="fas fa-trash"></i> Confirm Delete</div>
       <button class="modal-close" onclick="appFns.closeDeleteModal()"><i class="fas fa-times"></i></button>
     </div>
     <div class="modal-body" style="text-align:center;padding:32px 24px;">
       <div style="font-size:48px;margin-bottom:16px;">⚠️</div>
-      <div style="font-family:var(--font-head);font-size:1.1rem;font-weight:800;margin-bottom:10px;">Are you sure?</div>
-      <div style="color:var(--text-muted);font-size:0.9rem;font-weight:500;">
-        You are about to permanently delete <strong id="deleteStudentName"></strong> and all their records. This cannot be undone.
+      <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:10px;">Are you sure?</div>
+      <div style="color:var(--text-muted);font-size:0.88rem;">
+        Permanently delete <strong id="deleteTargetName"></strong> and all records. This cannot be undone.
       </div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-outline" onclick="appFns.closeDeleteModal()">Cancel</button>
-      <button class="btn btn-danger" id="confirmDeleteBtn" onclick="appFns.executeDeleteStudent()">
+      <button class="btn btn-danger" id="confirmDeleteBtn" onclick="appFns.executeDelete()">
         <i class="fas fa-trash"></i> Yes, Delete
       </button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     MODAL: ADD FEE RECORD
-═══════════════════════════════════════ -->
+<!-- ═══ MODAL: FEE RECORD ═══ -->
 <div class="modal-overlay" id="feeModal">
   <div class="modal">
     <div class="modal-header">
@@ -556,18 +562,19 @@
     <div class="modal-body">
       <form id="feeForm" onsubmit="event.preventDefault()">
         <div class="form-grid">
-          <div class="form-group full">
-            <label>Select Student *</label>
-            <select id="feeStudentSelect" required>
-              <option value="">— Select Student —</option>
+          <div class="form-group full"><label>Select Student *</label>
+            <select id="feeStudentSelect" required><option value="">— Select Student —</option></select>
+          </div>
+          <div class="form-group"><label>Amount (₹) *</label><input type="number" id="feeAmount" placeholder="e.g. 2500" min="1" required></div>
+          <div class="form-group"><label>Fee Type *</label>
+            <select id="feeType" required>
+              <option value="">— Select Type —</option>
+              <option>Tuition Fee</option><option>Admission Fee</option>
+              <option>Exam Fee</option><option>Transport Fee</option>
+              <option>Library Fee</option><option>Sports Fee</option><option>Other</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Amount (₹) *</label>
-            <input type="number" id="feeAmount" placeholder="e.g. 1500" min="1" required>
-          </div>
-          <div class="form-group">
-            <label>For Month</label>
+          <div class="form-group"><label>For Month</label>
             <select id="feeMonth">
               <option value="">Select Month</option>
               <option>January</option><option>February</option><option>March</option>
@@ -576,17 +583,14 @@
               <option>October</option><option>November</option><option>December</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Payment Date *</label>
-            <input type="date" id="feeDate" required>
-          </div>
-          <div class="form-group">
-            <label>Payment Status *</label>
+          <div class="form-group"><label>Payment Date *</label><input type="date" id="feeDate" required></div>
+          <div class="form-group"><label>Payment Status *</label>
             <select id="feeStatus" required>
               <option value="Paid">Paid</option>
               <option value="Pending">Pending</option>
             </select>
           </div>
+          <div class="form-group full"><label>Notes</label><input type="text" id="feeNotes" placeholder="Optional note"></div>
         </div>
       </form>
     </div>
@@ -599,13 +603,95 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     MODAL: REPORT PREVIEW
-═══════════════════════════════════════ -->
+<!-- ═══ MODAL: ADD/EDIT TEACHER ═══ -->
+<div class="modal-overlay" id="teacherModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fas fa-chalkboard-teacher" style="color:var(--gold)"></i> <span id="teacherModalTitle">Add Teacher</span></div>
+      <button class="modal-close" onclick="appFns.closeTeacherModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <form id="teacherForm" onsubmit="event.preventDefault()">
+        <div class="form-grid">
+          <div class="form-group full"><label>Full Name *</label><input type="text" id="tName" placeholder="e.g. Mrs. Lakshmi Devi" required></div>
+          <div class="form-group"><label>Phone *</label><input type="tel" id="tPhone" placeholder="9876543210" required></div>
+          <div class="form-group"><label>Email</label><input type="email" id="tEmail" placeholder="teacher@school.in"></div>
+          <div class="form-group"><label>Qualification *</label><input type="text" id="tQualification" placeholder="e.g. B.Ed, M.Sc" required></div>
+          <div class="form-group"><label>Experience (years)</label><input type="number" id="tExperience" placeholder="e.g. 5" min="0"></div>
+          <div class="form-group full"><label>Subjects Taught *</label><input type="text" id="tSubjects" placeholder="e.g. Mathematics, Science (comma separated)" required></div>
+          <div class="form-group full"><label>Classes Assigned *</label>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--bg);border-radius:10px;border:1.5px solid var(--border);" id="tClassCheckboxes">
+              <!-- checkboxes injected by JS -->
+            </div>
+          </div>
+          <div class="form-group"><label>Date of Joining</label><input type="date" id="tJoinDate"></div>
+          <div class="form-group"><label>Salary (₹/month)</label><input type="number" id="tSalary" placeholder="e.g. 25000"></div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="appFns.closeTeacherModal()">Cancel</button>
+      <button class="btn btn-gold" id="saveTeacherBtn" onclick="appFns.saveTeacher()">
+        <i class="fas fa-save"></i> <span id="saveTeacherBtnText">Add Teacher</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: ADD ADMISSION ═══ -->
+<div class="modal-overlay" id="admissionModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fas fa-file-signature" style="color:var(--gold)"></i> <span id="admissionModalTitle">New Admission</span></div>
+      <button class="modal-close" onclick="appFns.closeAdmissionModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <form id="admissionForm" onsubmit="event.preventDefault()">
+        <div class="form-grid">
+          <div class="form-group full"><label>Applicant Name *</label><input type="text" id="admName" placeholder="Student's full name" required></div>
+          <div class="form-group"><label>Date of Birth *</label><input type="date" id="admDob" required></div>
+          <div class="form-group"><label>Gender *</label>
+            <select id="admGender" required>
+              <option value="">— Select —</option><option>Male</option><option>Female</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Class Applying For *</label>
+            <select id="admClass" required>
+              <option value="">— Select —</option>
+              <option>Nursery</option><option>LKG</option><option>UKG</option>
+              <option>1st</option><option>2nd</option><option>3rd</option><option>4th</option><option>5th</option>
+              <option>6th</option><option>7th</option><option>8th</option><option>9th</option><option>10th</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Parent / Guardian *</label><input type="text" id="admParent" placeholder="Father/Mother name" required></div>
+          <div class="form-group"><label>Phone *</label><input type="tel" id="admPhone" placeholder="9876543210" required></div>
+          <div class="form-group"><label>Application Date</label><input type="date" id="admDate"></div>
+          <div class="form-group"><label>Status</label>
+            <select id="admStatus">
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Previous School</label><input type="text" id="admPrevSchool" placeholder="If applicable"></div>
+          <div class="form-group full"><label>Remarks</label><textarea id="admRemarks" placeholder="Optional remarks..."></textarea></div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="appFns.closeAdmissionModal()">Cancel</button>
+      <button class="btn btn-gold" id="saveAdmissionBtn" onclick="appFns.saveAdmission()">
+        <i class="fas fa-save"></i> <span id="saveAdmissionBtnText">Submit Admission</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: REPORT PREVIEW ═══ -->
 <div class="modal-overlay" id="reportModal">
   <div class="modal" style="max-width:700px;">
     <div class="modal-header">
-      <div class="modal-title"><i class="fas fa-file-alt" style="color:var(--purple)"></i> <span id="reportModalTitle">Report Preview</span></div>
+      <div class="modal-title"><i class="fas fa-file-alt" style="color:var(--gold)"></i> <span id="reportModalTitle">Report Preview</span></div>
       <button class="modal-close" onclick="appFns.closeReportModal()"><i class="fas fa-times"></i></button>
     </div>
     <div class="modal-body">
@@ -614,9 +700,9 @@
     <div class="modal-footer">
       <button class="btn btn-outline" onclick="appFns.closeReportModal()">Close</button>
       <button class="btn btn-success" onclick="appFns.shareViaWhatsApp()">
-        <i class="fab fa-whatsapp"></i> Share on WhatsApp
+        <i class="fab fa-whatsapp"></i> WhatsApp
       </button>
-      <button class="btn btn-primary" onclick="appFns.downloadReportPDF()">
+      <button class="btn btn-gold" onclick="appFns.downloadReportPDF()">
         <i class="fas fa-download"></i> Download PDF
       </button>
     </div>
@@ -624,59 +710,48 @@
 </div>
 
 <script>
-  // ─── SET CURRENT DATE ─────────────────────────────────────
   document.getElementById("currentDate").textContent = new Date().toLocaleDateString("en-IN", {
     weekday: "short", day: "2-digit", month: "short", year: "numeric"
   });
 
-  // ─── CLOSE MODAL ON OVERLAY CLICK ─────────────────────────
-  document.querySelectorAll(".modal-overlay").forEach(overlay => {
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) overlay.classList.remove("open");
+  // Class checkboxes in teacher modal
+  const CLASSES = ["Nursery","LKG","UKG","1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th"];
+  const ccont = document.getElementById("tClassCheckboxes");
+  if (ccont) {
+    CLASSES.forEach(cls => {
+      const lbl = document.createElement("label");
+      lbl.style.cssText = "display:flex;align-items:center;gap:5px;font-size:0.8rem;font-weight:600;cursor:pointer;padding:4px 10px;background:var(--card-bg);border-radius:7px;border:1.5px solid var(--border);transition:all 0.2s;";
+      lbl.innerHTML = `<input type="checkbox" name="tClass" value="${cls}" style="width:auto;padding:0;border:none;"> ${cls}`;
+      lbl.querySelector("input").addEventListener("change", function() {
+        lbl.style.borderColor = this.checked ? "var(--gold)" : "var(--border)";
+        lbl.style.background  = this.checked ? "var(--gold-light)" : "var(--card-bg)";
+      });
+      ccont.appendChild(lbl);
     });
-  });
+  }
 
-  // ─── ATTENDANCE CLASS FILTER (local re-render) ─────────────
-  document.getElementById("attClassFilter").addEventListener("change", function () {
-    // Trigger re-render in app.js via a simulated loadAttendanceForDate
-    if (window.appFns) window.appFns.loadAttendanceForDate();
+  document.querySelectorAll(".modal-overlay").forEach(o => {
+    o.addEventListener("click", e => { if (e.target === o) o.classList.remove("open"); });
   });
 </script>
 
-<!-- ─── Firebase App Module ─── -->
 <script type="module">
   import { initApp } from "./app.js";
   initApp();
-
-  // Patch overview students table using cached data
-  // We poll every 3s to keep overview fresh
-  setInterval(() => {
-    const tbody = document.getElementById("overviewStudentsBody");
-    const badge = document.getElementById("sidebarStudentCount");
-    if (!tbody || !window.appFns) return;
-
-    // access studentsCache via a re-query from app state
-    // (This is handled by the subscribeStudents listener in app.js)
-    // We'll use a custom event approach: app.js dispatches a custom event on student changes
-  }, 3000);
 </script>
 
-<!-- ─── Patch: overview table + sidebar badge (via event) ─── -->
 <script type="module">
-  // Listen for student cache updates dispatched by app.js
   window.addEventListener("studentsUpdated", (e) => {
     const students = e.detail || [];
-
-    // Sidebar badge
     const badge = document.getElementById("sidebarStudentCount");
     if (badge) badge.textContent = students.length;
-
-    // Overview table (show last 5)
+    const cnt = document.getElementById("studentCountBadge");
+    if (cnt) cnt.textContent = students.length;
     const tbody = document.getElementById("overviewStudentsBody");
     if (!tbody) return;
-    const recent = students.slice(0, 5);
+    const recent = students.slice(0,5);
     if (recent.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="4"><div class="empty-state"><span class="empty-emoji">👶</span><div class="empty-title">No students yet</div></div></td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="4"><div class="empty-state"><span class="empty-emoji">🎓</span><div class="empty-title">No students yet</div></div></td></tr>`;
     } else {
       tbody.innerHTML = recent.map(s => `
         <tr>
@@ -684,9 +759,24 @@
           <td><span class="badge badge-${s.class.toLowerCase()}">${s.class}</span></td>
           <td>${s.parent}</td>
           <td><a href="tel:${s.phone}" style="color:var(--blue);font-weight:700;text-decoration:none;">${s.phone}</a></td>
-        </tr>
-      `).join("");
+        </tr>`).join("");
     }
+  });
+
+  window.addEventListener("teachersUpdated", (e) => {
+    const teachers = e.detail || [];
+    const badge = document.getElementById("sidebarTeacherCount");
+    if (badge) badge.textContent = teachers.length;
+    const cnt = document.getElementById("teacherCountBadge");
+    if (cnt) cnt.textContent = teachers.length;
+  });
+
+  window.addEventListener("admissionsUpdated", (e) => {
+    const admissions = e.detail || [];
+    const badge = document.getElementById("sidebarAdmissionCount");
+    if (badge) badge.textContent = admissions.length;
+    const cnt = document.getElementById("admissionCountBadge");
+    if (cnt) cnt.textContent = admissions.length;
   });
 </script>
 </body>
