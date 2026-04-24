@@ -1,4 +1,4 @@
- /**
+  /**
  * ============================================================
  * SRI CHAITHANYA ENGLISH MEDIUM SCHOOL
  * Admin App Logic — app.js | Firebase v10 Modular SDK
@@ -56,6 +56,13 @@ let editTeacherId   = null;
 let editAdmissionId = null;
 let deleteTarget    = { id: null, col: null, name: "" };
 
+// ─── READY FLAGS — track which listeners fired first snapshot ────
+let _readyFlags = { students: false, teachers: false, admissions: false, fees: false };
+function markReady(key) {
+  _readyFlags[key] = true;
+  if (Object.values(_readyFlags).every(Boolean)) loadDashboardStats();
+}
+
 // ─── INIT ─────────────────────────────────────────────────────
 export function initApp() {
   onAuthStateChanged(auth, (user) => {
@@ -63,11 +70,11 @@ export function initApp() {
     currentUser = user;
     hideLoader();
     setEl("adminEmail", user.email || "Principal");
+    _readyFlags = { students: false, teachers: false, admissions: false, fees: false };
     subscribeStudents();
     subscribeTeachers();
     subscribeAdmissions();
     subscribeFees();
-    loadDashboardStats();
     navigateTo("overview");
   });
 }
@@ -152,32 +159,35 @@ export function closeReportModal()    { closeModal("reportModal"); }
 // ─────────────────────────────────────────────────────────────
 async function loadDashboardStats() {
   try {
-    // Students
+    // ── Students (from live cache) ──
     const totalStudents = studentsCache.length;
     const classCounts = {};
     studentsCache.forEach(s => { classCounts[s.class] = (classCounts[s.class] || 0) + 1; });
     const topClass = Object.entries(classCounts).sort((a,b) => b[1]-a[1])[0];
 
-    // Fees
+    // ── Fees (from live cache) ──
     let collected = 0, pending = 0;
     feesCache.forEach(f => {
       if (f.status === "Paid") collected += Number(f.amount) || 0;
       else pending += Number(f.amount) || 0;
     });
 
-    // Today's attendance
+    // ── Today's attendance (direct Firestore query — most reliable) ──
     const today = new Date().toISOString().split("T")[0];
-    const attSnap = await getDocs(query(collection(db, COL.ATTENDANCE), where("date", "==", today)));
     let presentToday = 0;
-    attSnap.forEach(d => { if (d.data().status === "Present") presentToday++; });
+    try {
+      const attSnap = await getDocs(query(collection(db, COL.ATTENDANCE), where("date", "==", today)));
+      attSnap.forEach(d => { if (d.data().status === "Present") presentToday++; });
+    } catch(attErr) { console.warn("Attendance query:", attErr); }
     const attPct = totalStudents > 0 ? Math.round((presentToday / totalStudents) * 100) : 0;
 
-    // Teachers
+    // ── Teachers (from live cache) ──
     const totalTeachers = teachersCache.length;
 
-    // Admissions pending
+    // ── Admissions pending (from live cache) ──
     const pendingAdm = admissionsCache.filter(a => a.status === "Pending").length;
 
+    // ── Update DOM ──
     setEl("statTotalStudents", totalStudents);
     setEl("statClassBreakdown", topClass ? `Most in: ${topClass[0]} (${topClass[1]})` : "Nursery to 10th");
     setEl("statAttendance", attPct + "%");
@@ -186,6 +196,15 @@ async function loadDashboardStats() {
     setEl("statPendingFees", "₹" + pending.toLocaleString("en-IN") + " pending");
     setEl("statTeachers", totalTeachers);
     setEl("statNewAdmissions", `${pendingAdm} pending admission${pendingAdm !== 1 ? "s" : ""}`);
+
+    // ── Also refresh sidebar badges ──
+    const sb = document.getElementById("sidebarStudentCount");
+    if (sb) sb.textContent = totalStudents;
+    const tb = document.getElementById("sidebarTeacherCount");
+    if (tb) tb.textContent = totalTeachers;
+    const ab = document.getElementById("sidebarAdmissionCount");
+    if (ab) ab.textContent = admissionsCache.length;
+
   } catch(e) { console.error("Stats error:", e); }
 }
 
@@ -200,6 +219,9 @@ function subscribeStudents() {
     renderStudentsTable(studentsCache);
     populateStudentDropdowns();
     window.dispatchEvent(new CustomEvent("studentsUpdated", { detail: studentsCache }));
+    markReady("students");
+    // Refresh stats live on every student change
+    if (_readyFlags.teachers && _readyFlags.admissions && _readyFlags.fees) loadDashboardStats();
   }, err => console.error("Students listener:", err));
 }
 
@@ -321,6 +343,8 @@ function subscribeAdmissions() {
     snap.forEach(d => admissionsCache.push({ id: d.id, ...d.data() }));
     renderAdmissionsTable(admissionsCache);
     window.dispatchEvent(new CustomEvent("admissionsUpdated", { detail: admissionsCache }));
+    markReady("admissions");
+    if (_readyFlags.students && _readyFlags.teachers && _readyFlags.fees) loadDashboardStats();
   }, err => console.error("Admissions listener:", err));
 }
 
@@ -574,6 +598,9 @@ function subscribeFees() {
     feesCache = [];
     snap.forEach(d => feesCache.push({ id: d.id, ...d.data() }));
     renderFeesTable(feesCache);
+    updateFeeSummary(feesCache);
+    markReady("fees");
+    if (_readyFlags.students && _readyFlags.teachers && _readyFlags.admissions) loadDashboardStats();
   }, err => console.error("Fees listener:", err));
 }
 
@@ -684,6 +711,8 @@ function subscribeTeachers() {
     snap.forEach(d => teachersCache.push({ id: d.id, ...d.data() }));
     renderTeachersTable(teachersCache);
     window.dispatchEvent(new CustomEvent("teachersUpdated", { detail: teachersCache }));
+    markReady("teachers");
+    if (_readyFlags.students && _readyFlags.admissions && _readyFlags.fees) loadDashboardStats();
   }, err => console.error("Teachers listener:", err));
 }
 
