@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -79,6 +79,16 @@ body { font-family: var(--font-body); background: var(--cream); color: var(--nav
   box-shadow: 0 4px 16px rgba(201,147,58,0.4);
 }
 .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(201,147,58,0.5) !important; background: rgba(201,147,58,0.1) !important; color: var(--navy) !important; }
+
+.nav-admin-btn {
+  background: rgba(201,147,58,0.15) !important;
+  color: var(--gold2) !important; font-weight: 700 !important;
+  border: 1.5px solid var(--gold2) !important;
+  border-radius: 8px !important; padding: 8px 14px !important;
+  display: inline-flex !important; align-items: center !important; gap: 6px !important;
+  transition: all 0.2s !important;
+}
+.nav-admin-btn:hover { background: var(--gold2) !important; color: var(--navy) !important; box-shadow: 0 4px 12px rgba(201,147,58,0.3) !important; }
 
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: none; }
 .hamburger span { width: 26px; height: 2px; background: var(--gold); border-radius: 2px; transition: all 0.3s; display: block; }
@@ -224,24 +234,6 @@ body { font-family: var(--font-body); background: var(--cream); color: var(--nav
 }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold2); transform: translateY(-2px); }
 
-.hero-scroll {
-  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-  z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px;
-  animation: fadeInUp 1s 1.5s ease both;
-}
-.scroll-text { color: rgba(255,255,255,0.4); font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; }
-.scroll-mouse {
-  width: 24px; height: 38px; border: 2px solid rgba(201,147,58,0.4); border-radius: 12px;
-  display: flex; justify-content: center; padding-top: 6px;
-}
-.scroll-dot {
-  width: 4px; height: 8px; background: var(--gold); border-radius: 2px;
-  animation: scrollDot 2s ease-in-out infinite;
-}
-@keyframes scrollDot {
-  0%,100% { transform: translateY(0); opacity:1; }
-  50% { transform: translateY(10px); opacity:0.3; }
-}
 
 /* ─── SECTION COMMONS ─── */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -673,9 +665,10 @@ footer::before {
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#classes">Classes</a></li>
-      <li><a href="login.html" title="Admin Login">Academics</a></li>
+      <li><a href="#academics">Academics</a></li>
       <li><a href="#facilities">Facilities</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="login.html" class="nav-admin-btn"><i class="fas fa-lock"></i> Admin</a></li>
       <li class="nav-cta-wrap"><a href="#admission" class="nav-cta">Enroll Now</a></li>
     </ul>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -685,9 +678,10 @@ footer::before {
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" onclick="toggleMenu()">About</a>
     <a href="#classes" onclick="toggleMenu()">Classes</a>
-    <a href="login.html" onclick="toggleMenu()">Academics</a>
+    <a href="#academics" onclick="toggleMenu()">Academics</a>
     <a href="#facilities" onclick="toggleMenu()">Facilities</a>
     <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="login.html" onclick="toggleMenu()" style="color:var(--gold2);font-weight:700;border-top:1px solid rgba(201,147,58,0.2);padding-top:12px;margin-top:12px;"><i class="fas fa-lock"></i> Admin Login</a>
     <a href="#admission" onclick="toggleMenu()" style="color:var(--gold2);font-weight:700;">⭐ Enroll Now</a>
   </div>
 </nav>
@@ -780,16 +774,9 @@ footer::before {
       <a href="#admission" class="btn-gold">
         <i class="fas fa-graduation-cap"></i> Apply for Admission
       </a>
-      <a href="#about" class="btn-outline">
-        <i class="fas fa-play"></i> Discover More
-      </a>
     </div>
   </div>
 
-  <div class="hero-scroll">
-    <div class="scroll-text">Scroll</div>
-    <div class="scroll-mouse"><div class="scroll-dot"></div></div>
-  </div>
 </section>
 
 <!-- ─── TICKER ─── -->
